@@ -1,45 +1,31 @@
 # Subscribe - Newsletter Opt-In for WooCommerce
 
-A GDPR-minded newsletter opt-in for WooCommerce. Adds an unchecked-by-default
-consent checkbox at checkout and a `[subscribe_form]` shortcode, and stores
-subscribers (email + consent + source + timestamp) as a private custom post type
-you can review and export to CSV. No external email service required.
+A GDPR-minded newsletter opt-in for WooCommerce. Subscribe adds an unchecked-by-default consent checkbox at checkout and a `[subscribe_form]` shortcode, then stores subscribers (email, consent, source and timestamp) as a private custom post type you can review and export to CSV. No external email service required.
 
 ## Features
 
 - Newsletter opt-in checkbox on the classic WooCommerce checkout.
 - `[subscribe_form]` shortcode for a standalone opt-in form.
 - Explicit, unchecked-by-default consent with a configurable label.
-- Subscribers stored as a private CPT under **WooCommerce → Subscribers**.
+- Subscribers stored as a private list under **WooCommerce → Subscribers**.
 - One-click **Export to CSV**.
 - Optional admin notification on each new subscriber.
-- Idempotent recording — a repeat email is never stored or notified twice.
-- Accessible, dark-mode-aware, translation-ready, clean uninstall.
-- HPOS and cart/checkout blocks compatible.
+- A repeat email is never stored or notified twice.
 
-## Requirements
+## Installation
 
-- WordPress 6.5+
-- WooCommerce 8.0+
-- PHP 8.1+
+1. Upload the plugin to `/wp-content/plugins/subscribe`, or install it via **Plugins → Add New**.
+2. Activate it. WooCommerce must be active.
+3. The consent checkbox appears at checkout automatically; add `[subscribe_form]` to any page for a standalone form.
 
-## Development
+## Frequently Asked Questions
 
-```bash
-composer install
-composer cs        # PHP_CodeSniffer (WordPress security ruleset)
-composer analyse   # PHPStan level 6
-```
+**Does it send emails to subscribers?**
+No. Subscribe collects and stores opt-ins. You can export the list to CSV and import it into your email tool of choice.
 
-The plugin is self-contained — it has no runtime Composer dependencies. The
-`autoload.php` PSR-4 fallback loads `src/` when `vendor/` is absent (the wp.org
-build excludes `vendor/`).
+**Is consent opt-in by default?**
+The checkbox is always unchecked by default, so subscribers must explicitly opt in.
 
-## Extension point
+Built by WPPoland — https://plogins.com
 
-Pro add-ons boot via the `subscribe/booted` action and can react to new
-subscribers via `subscribe/subscriber_created` (`$postId`, `$email`, `$source`).
-
-## License
-
-GPL-2.0-or-later.
+License: GPL-2.0-or-later
