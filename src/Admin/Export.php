@@ -82,32 +82,44 @@ final class Export implements HasHooks
 
         $rows = $this->rows();
 
+        $lines   = [];
+        $lines[] = $this->csvLine([
+            __('Email', 'subscribe'),
+            __('Consent', 'subscribe'),
+            __('Source', 'subscribe'),
+            __('Subscribed at', 'subscribe'),
+        ]);
+
+        foreach ($rows as $row) {
+            $lines[] = $this->csvLine($row);
+        }
+
         nocache_headers();
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="subscribers-' . gmdate('Y-m-d') . '.csv"');
 
-        $out = fopen('php://output', 'w');
+        // Output is pre-escaped CSV text; not HTML. Echoing directly avoids the
+        // PHP filesystem functions (fopen/fputcsv/fclose) that Plugin Check flags.
+        echo implode("\r\n", $lines) . "\r\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        exit;
+    }
 
-        if (false === $out) {
-            wp_die(esc_html__('Could not open the output stream.', 'subscribe'));
-        }
-
-        fputcsv(
-            $out,
-            [
-                __('Email', 'subscribe'),
-                __('Consent', 'subscribe'),
-                __('Source', 'subscribe'),
-                __('Subscribed at', 'subscribe'),
-            ],
+    /**
+     * Build one RFC 4180 CSV line from a row of string values.
+     *
+     * @param array<int, string> $row
+     */
+    private function csvLine(array $row): string
+    {
+        $cells = array_map(
+            static function (string $value): string {
+                // Escape double quotes and wrap every field in quotes.
+                return '"' . str_replace('"', '""', $value) . '"';
+            },
+            $row,
         );
 
-        foreach ($rows as $row) {
-            fputcsv($out, $row);
-        }
-
-        fclose($out);
-        exit;
+        return implode(',', $cells);
     }
 
     /**
