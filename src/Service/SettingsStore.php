@@ -11,8 +11,8 @@ defined('ABSPATH') || exit;
 /**
  * Read-only access to the merged plugin settings (defaults + stored option).
  *
- * A single source of truth so the storefront, the shortcode and the notifier all
- * resolve the same values without each re-implementing the merge.
+ * A single source of truth so the storefront and the admin both resolve the same
+ * values without each re-implementing the merge.
  */
 final class SettingsStore
 {

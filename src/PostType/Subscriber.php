@@ -26,8 +26,7 @@ final class Subscriber implements HasHooks
     public const META_CONSENTED = '_subscribe_consented_at';
 
     /** Recognised opt-in sources. */
-    public const SOURCE_CHECKOUT  = 'checkout';
-    public const SOURCE_SHORTCODE = 'shortcode';
+    public const SOURCE_CHECKOUT = 'checkout';
 
     public function registerHooks(): void
     {
@@ -155,16 +154,6 @@ final class Subscriber implements HasHooks
         update_post_meta($postId, self::META_CONSENT, 1);
         update_post_meta($postId, self::META_SOURCE, $source);
         update_post_meta($postId, self::META_CONSENTED, time());
-
-        /**
-         * Fires once after a brand-new subscriber is stored (never for a
-         * duplicate). PRO add-ons hook here, e.g. to send a welcome email.
-         *
-         * @param int    $postId The new subscriber post ID.
-         * @param string $email  The subscriber email.
-         * @param string $source The opt-in source key.
-         */
-        do_action('subscribe/subscriber_created', (int) $postId, $email, $source);
 
         return (int) $postId;
     }
@@ -298,8 +287,6 @@ final class Subscriber implements HasHooks
         switch ($source) {
             case self::SOURCE_CHECKOUT:
                 return __('Checkout', 'subscribe');
-            case self::SOURCE_SHORTCODE:
-                return __('Form', 'subscribe');
             case '':
                 return '—';
             default:

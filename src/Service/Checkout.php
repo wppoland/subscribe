@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
  *
  * The checkbox is unticked by default (configurable) for explicit GDPR consent.
  * Recording is idempotent — the Subscriber CPT de-duplicates by email, so a
- * repeat customer never creates a duplicate record and is never re-notified.
+ * repeat customer never creates a duplicate record.
  */
 final class Checkout implements HasHooks
 {
@@ -24,7 +24,6 @@ final class Checkout implements HasHooks
     public function __construct(
         private readonly SettingsStore $settings,
         private readonly Subscriber $subscribers,
-        private readonly Notifier $notifier,
     ) {
     }
 
@@ -34,30 +33,11 @@ final class Checkout implements HasHooks
             return;
         }
 
-        $this->registerPlacementHook();
+        add_action('woocommerce_checkout_after_terms_and_conditions', [$this, 'renderCheckbox']);
 
         // Persist the opt-in once the order is created. order_processed runs after
         // a successful checkout and gives us the posted fields safely.
         add_action('woocommerce_checkout_order_processed', [$this, 'capture'], 10, 2);
-    }
-
-    /**
-     * Hook the checkbox renderer onto the configured classic-checkout location.
-     */
-    private function registerPlacementHook(): void
-    {
-        switch ((string) $this->settings->get('placement', 'after_terms')) {
-            case 'before_terms':
-                add_action('woocommerce_checkout_before_terms_and_conditions', [$this, 'renderCheckbox']);
-                break;
-            case 'after_billing':
-                add_action('woocommerce_after_checkout_billing_form', [$this, 'renderCheckbox']);
-                break;
-            case 'after_terms':
-            default:
-                add_action('woocommerce_checkout_after_terms_and_conditions', [$this, 'renderCheckbox']);
-                break;
-        }
     }
 
     /**
@@ -107,16 +87,12 @@ final class Checkout implements HasHooks
             return;
         }
 
-        // Idempotency: skip (and don't notify) if already subscribed.
+        // Idempotency: skip if already subscribed.
         if ($this->subscribers->exists($email)) {
             return;
         }
 
-        $postId = $this->subscribers->create($email, Subscriber::SOURCE_CHECKOUT);
-
-        if ($postId > 0) {
-            $this->notifier->notifyNewSubscriber($email, $this->subscribers->sourceLabel(Subscriber::SOURCE_CHECKOUT));
-        }
+        $this->subscribers->create($email, Subscriber::SOURCE_CHECKOUT);
     }
 
     /**

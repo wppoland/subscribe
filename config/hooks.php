@@ -15,7 +15,6 @@ use Subscribe\Admin\Export;
 use Subscribe\Admin\Settings;
 use Subscribe\PostType\Subscriber;
 use Subscribe\Service\Checkout;
-use Subscribe\Service\Form;
 
 defined('ABSPATH') || exit;
 
@@ -23,12 +22,10 @@ return is_admin()
     ? [
         Subscriber::class,
         Checkout::class,
-        Form::class,
         Settings::class,
         Export::class,
     ]
     : [
         Subscriber::class,
         Checkout::class,
-        Form::class,
     ];
