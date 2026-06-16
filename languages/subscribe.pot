@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-14T22:02:29+00:00\n"
+"POT-Creation-Date: 2026-06-16T20:24:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: subscribe\n"
@@ -56,32 +56,32 @@ msgid "Security check failed. Please try again."
 msgstr ""
 
 #: src/Admin/Export.php:87
-#: src/PostType/Subscriber.php:171
-#: src/PostType/Subscriber.php:242
+#: src/PostType/Subscriber.php:186
+#: src/PostType/Subscriber.php:257
 msgid "Email"
 msgstr ""
 
 #: src/Admin/Export.php:88
-#: src/PostType/Subscriber.php:252
+#: src/PostType/Subscriber.php:267
 msgid "Consent"
 msgstr ""
 
 #: src/Admin/Export.php:89
-#: src/PostType/Subscriber.php:176
-#: src/PostType/Subscriber.php:262
+#: src/PostType/Subscriber.php:191
+#: src/PostType/Subscriber.php:277
 msgid "Source"
 msgstr ""
 
 #: src/Admin/Export.php:90
-#: src/PostType/Subscriber.php:266
+#: src/PostType/Subscriber.php:281
 msgid "Subscribed at"
 msgstr ""
 
-#: src/Admin/Export.php:155
+#: src/Admin/Export.php:164
 msgid "Yes"
 msgstr ""
 
-#: src/Admin/Export.php:155
+#: src/Admin/Export.php:164
 msgid "No"
 msgstr ""
 
@@ -101,53 +101,73 @@ msgstr ""
 msgid "Add a GDPR-minded newsletter opt-in to your checkout (unchecked by default) and collect subscribers with explicit consent. Every opt-in is stored privately with its source and timestamp, ready to review and export."
 msgstr ""
 
-#: src/Admin/Settings.php:97
-msgid "Opt-in"
-msgstr ""
-
-#: src/Admin/Settings.php:102
-msgid "Enable opt-in"
-msgstr ""
-
-#: src/Admin/Settings.php:109
-msgid "Show the newsletter opt-in to customers."
-msgstr ""
-
-#: src/Admin/Settings.php:112
-msgid "The master switch. When off, the checkout checkbox renders nothing."
-msgstr ""
-
-#: src/Admin/Settings.php:118
-msgid "Checkout checkbox"
-msgstr ""
-
-#: src/Admin/Settings.php:125
-msgid "Add the opt-in checkbox at checkout."
-msgstr ""
-
-#: src/Admin/Settings.php:131
-msgid "Checkbox label"
-msgstr ""
-
-#: src/Admin/Settings.php:137
+#: src/Admin/Settings.php:94
 #: src/Service/SettingsStore.php:62
 msgid "Yes, sign me up for the newsletter."
 msgstr ""
 
-#: src/Admin/Settings.php:139
-msgid "The consent text shown next to the checkbox. Make it clear what the customer is agreeing to. Leave blank to use the default."
+#: src/Admin/Settings.php:105
+msgid "Where it appears"
 msgstr ""
 
-#: src/Admin/Settings.php:145
+#: src/Admin/Settings.php:107
+msgid "Turn the opt-in on and choose where customers see it."
+msgstr ""
+
+#: src/Admin/Settings.php:114
+msgid "Enable opt-in"
+msgstr ""
+
+#: src/Admin/Settings.php:121
+msgid "Show the newsletter opt-in to customers."
+msgstr ""
+
+#: src/Admin/Settings.php:124
+msgid "The master switch. When off, nothing renders anywhere and no new subscribers are collected — existing records stay intact."
+msgstr ""
+
+#: src/Admin/Settings.php:130
+msgid "Checkout checkbox"
+msgstr ""
+
+#: src/Admin/Settings.php:137
+msgid "Add the opt-in checkbox at checkout."
+msgstr ""
+
+#: src/Admin/Settings.php:140
+msgid "Places the checkbox in the order form so customers can subscribe as they buy — the highest-intent moment. The source is recorded as “checkout”. Turn off to keep the opt-in for other placements only."
+msgstr ""
+
+#: src/Admin/Settings.php:151
+msgid "Consent &amp; wording"
+msgstr ""
+
+#: src/Admin/Settings.php:153
+msgid "Word the consent and decide whether the box starts ticked."
+msgstr ""
+
+#: src/Admin/Settings.php:160
+msgid "Checkbox label"
+msgstr ""
+
+#: src/Admin/Settings.php:168
+msgid "The consent text shown next to the checkbox. State plainly what the customer agrees to receive — vague wording weakens GDPR consent. Leave blank to use the default below."
+msgstr ""
+
+#: src/Admin/Settings.php:176
+msgid "Live preview — how the opt-in row looks at checkout."
+msgstr ""
+
+#: src/Admin/Settings.php:182
 msgid "Default state"
 msgstr ""
 
-#: src/Admin/Settings.php:152
-msgid "Pre-check the box (not recommended for GDPR)."
+#: src/Admin/Settings.php:189
+msgid "Start with the box ticked."
 msgstr ""
 
-#: src/Admin/Settings.php:155
-msgid "For valid GDPR consent, leave this off so the customer always opts in explicitly."
+#: src/Admin/Settings.php:192
+msgid "Leave off (recommended): the customer opts in deliberately, which is what GDPR requires. Ticking it pre-selects consent and may make it invalid in the EU/UK."
 msgstr ""
 
 #: src/PostType/Subscriber.php:57
@@ -177,23 +197,24 @@ msgstr ""
 msgid "No subscribers in Trash."
 msgstr ""
 
-#: src/PostType/Subscriber.php:177
+#: src/PostType/Subscriber.php:192
+#: src/Service/Checkout.php:88
 msgid "Subscribed"
 msgstr ""
 
-#: src/PostType/Subscriber.php:224
+#: src/PostType/Subscriber.php:239
 msgid "Subscriber details"
 msgstr ""
 
-#: src/PostType/Subscriber.php:256
+#: src/PostType/Subscriber.php:271
 msgid "Explicit opt-in recorded"
 msgstr ""
 
-#: src/PostType/Subscriber.php:257
+#: src/PostType/Subscriber.php:272
 msgid "No consent recorded"
 msgstr ""
 
-#: src/PostType/Subscriber.php:289
+#: src/PostType/Subscriber.php:304
 msgid "Checkout"
 msgstr ""
 

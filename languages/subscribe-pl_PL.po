@@ -4,15 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Subscribe - Newsletter Opt-In for WooCommerce 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/subscribe\n"
+"POT-Creation-Date: 2026-06-16T20:24:26+00:00\n"
+"PO-Revision-Date: 2026-06-15 00:00+0000\n"
 "Last-Translator: WPPoland <hello@plogins.com>\n"
 "Language-Team: Polish <pl_PL@li.org>\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-14T22:02:29+00:00\n"
-"PO-Revision-Date: 2026-06-15 00:00+0000\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: subscribe\n"
 
@@ -28,8 +29,11 @@ msgstr "https://plogins.com/subscribe/"
 
 #. Description of the plugin
 #: subscribe.php
-msgid "Add a newsletter opt-in at checkout and collect subscribers with consent."
-msgstr "Dodaj zapis do newslettera przy składaniu zamówienia i zbieraj subskrybentów za ich zgodą."
+msgid ""
+"Add a newsletter opt-in at checkout and collect subscribers with consent."
+msgstr ""
+"Dodaj zapis do newslettera przy składaniu zamówienia i zbieraj subskrybentów "
+"za ich zgodą."
 
 #. Author of the plugin
 #: subscribe.php
@@ -42,8 +46,11 @@ msgid "https://plogins.com/"
 msgstr "https://plogins.com/"
 
 #: src/Admin/Export.php:57
-msgid "Export every subscriber (email, consent, source and date) to a CSV file."
-msgstr "Eksportuj wszystkich subskrybentów (e-mail, zgoda, źródło i data) do pliku CSV."
+msgid ""
+"Export every subscriber (email, consent, source and date) to a CSV file."
+msgstr ""
+"Eksportuj wszystkich subskrybentów (e-mail, zgoda, źródło i data) do pliku "
+"CSV."
 
 #: src/Admin/Export.php:59
 msgid "Export to CSV"
@@ -57,33 +64,29 @@ msgstr "Nie masz uprawnień do eksportowania subskrybentów."
 msgid "Security check failed. Please try again."
 msgstr "Weryfikacja bezpieczeństwa nie powiodła się. Spróbuj ponownie."
 
-#: src/Admin/Export.php:87
-#: src/PostType/Subscriber.php:171
-#: src/PostType/Subscriber.php:242
+#: src/Admin/Export.php:87 src/PostType/Subscriber.php:186
+#: src/PostType/Subscriber.php:257
 msgid "Email"
 msgstr "E-mail"
 
-#: src/Admin/Export.php:88
-#: src/PostType/Subscriber.php:252
+#: src/Admin/Export.php:88 src/PostType/Subscriber.php:267
 msgid "Consent"
 msgstr "Zgoda"
 
-#: src/Admin/Export.php:89
-#: src/PostType/Subscriber.php:176
-#: src/PostType/Subscriber.php:262
+#: src/Admin/Export.php:89 src/PostType/Subscriber.php:191
+#: src/PostType/Subscriber.php:277
 msgid "Source"
 msgstr "Źródło"
 
-#: src/Admin/Export.php:90
-#: src/PostType/Subscriber.php:266
+#: src/Admin/Export.php:90 src/PostType/Subscriber.php:281
 msgid "Subscribed at"
 msgstr "Data zapisu"
 
-#: src/Admin/Export.php:155
+#: src/Admin/Export.php:164
 msgid "Yes"
 msgstr "Tak"
 
-#: src/Admin/Export.php:155
+#: src/Admin/Export.php:164
 msgid "No"
 msgstr "Nie"
 
@@ -100,60 +103,96 @@ msgid "Grow your newsletter from checkout"
 msgstr "Rozwijaj newsletter już przy składaniu zamówienia"
 
 #: src/Admin/Settings.php:89
-msgid "Add a GDPR-minded newsletter opt-in to your checkout (unchecked by default) and collect subscribers with explicit consent. Every opt-in is stored privately with its source and timestamp, ready to review and export."
-msgstr "Dodaj zgodny z RODO zapis do newslettera przy składaniu zamówienia (domyślnie niezaznaczony) i zbieraj subskrybentów za ich wyraźną zgodą. Każdy zapis jest przechowywany prywatnie wraz ze źródłem i znacznikiem czasu, gotowy do przeglądania i eksportu."
+msgid ""
+"Add a GDPR-minded newsletter opt-in to your checkout (unchecked by default) "
+"and collect subscribers with explicit consent. Every opt-in is stored "
+"privately with its source and timestamp, ready to review and export."
+msgstr ""
+"Dodaj zgodny z RODO zapis do newslettera przy składaniu zamówienia "
+"(domyślnie niezaznaczony) i zbieraj subskrybentów za ich wyraźną zgodą. "
+"Każdy zapis jest przechowywany prywatnie wraz ze źródłem i znacznikiem "
+"czasu, gotowy do przeglądania i eksportu."
 
-#: src/Admin/Settings.php:97
-msgid "Opt-in"
-msgstr "Zapis"
-
-#: src/Admin/Settings.php:102
-msgid "Enable opt-in"
-msgstr "Włącz zapis"
-
-#: src/Admin/Settings.php:109
-msgid "Show the newsletter opt-in to customers."
-msgstr "Wyświetlaj klientom zapis do newslettera."
-
-#: src/Admin/Settings.php:112
-msgid "The master switch. When off, the checkout checkbox renders nothing."
-msgstr "Przełącznik główny. Po wyłączeniu pole wyboru przy zamówieniu nie jest wyświetlane."
-
-#: src/Admin/Settings.php:118
-msgid "Checkout checkbox"
-msgstr "Pole wyboru przy zamówieniu"
-
-#: src/Admin/Settings.php:125
-msgid "Add the opt-in checkbox at checkout."
-msgstr "Dodaj pole wyboru zapisu przy składaniu zamówienia."
-
-#: src/Admin/Settings.php:131
-msgid "Checkbox label"
-msgstr "Etykieta pola wyboru"
-
-#: src/Admin/Settings.php:137
-#: src/Service/SettingsStore.php:62
+#: src/Admin/Settings.php:94 src/Service/SettingsStore.php:62
 msgid "Yes, sign me up for the newsletter."
 msgstr "Tak, zapisz mnie do newslettera."
 
-#: src/Admin/Settings.php:139
-msgid "The consent text shown next to the checkbox. Make it clear what the customer is agreeing to. Leave blank to use the default."
-msgstr "Tekst zgody wyświetlany obok pola wyboru. Jasno określ, na co klient wyraża zgodę. Pozostaw puste, aby użyć wartości domyślnej."
+#: src/Admin/Settings.php:105
+msgid "Where it appears"
+msgstr ""
 
-#: src/Admin/Settings.php:145
+#: src/Admin/Settings.php:107
+msgid "Turn the opt-in on and choose where customers see it."
+msgstr ""
+
+#: src/Admin/Settings.php:114
+msgid "Enable opt-in"
+msgstr "Włącz zapis"
+
+#: src/Admin/Settings.php:121
+msgid "Show the newsletter opt-in to customers."
+msgstr "Wyświetlaj klientom zapis do newslettera."
+
+#: src/Admin/Settings.php:124
+msgid ""
+"The master switch. When off, nothing renders anywhere and no new subscribers "
+"are collected — existing records stay intact."
+msgstr ""
+
+#: src/Admin/Settings.php:130
+msgid "Checkout checkbox"
+msgstr "Pole wyboru przy zamówieniu"
+
+#: src/Admin/Settings.php:137
+msgid "Add the opt-in checkbox at checkout."
+msgstr "Dodaj pole wyboru zapisu przy składaniu zamówienia."
+
+#: src/Admin/Settings.php:140
+msgid ""
+"Places the checkbox in the order form so customers can subscribe as they buy "
+"— the highest-intent moment. The source is recorded as “checkout”. Turn off "
+"to keep the opt-in for other placements only."
+msgstr ""
+
+#: src/Admin/Settings.php:151
+msgid "Consent &amp; wording"
+msgstr ""
+
+#: src/Admin/Settings.php:153
+msgid "Word the consent and decide whether the box starts ticked."
+msgstr ""
+
+#: src/Admin/Settings.php:160
+msgid "Checkbox label"
+msgstr "Etykieta pola wyboru"
+
+#: src/Admin/Settings.php:168
+msgid ""
+"The consent text shown next to the checkbox. State plainly what the customer "
+"agrees to receive — vague wording weakens GDPR consent. Leave blank to use "
+"the default below."
+msgstr ""
+
+#: src/Admin/Settings.php:176
+msgid "Live preview — how the opt-in row looks at checkout."
+msgstr ""
+
+#: src/Admin/Settings.php:182
 msgid "Default state"
 msgstr "Stan domyślny"
 
-#: src/Admin/Settings.php:152
-msgid "Pre-check the box (not recommended for GDPR)."
-msgstr "Zaznacz pole domyślnie (niezalecane w świetle RODO)."
+#: src/Admin/Settings.php:189
+msgid "Start with the box ticked."
+msgstr ""
 
-#: src/Admin/Settings.php:155
-msgid "For valid GDPR consent, leave this off so the customer always opts in explicitly."
-msgstr "Aby zgoda była ważna w świetle RODO, pozostaw tę opcję wyłączoną, tak aby klient zawsze wyrażał zgodę w sposób wyraźny."
+#: src/Admin/Settings.php:192
+msgid ""
+"Leave off (recommended): the customer opts in deliberately, which is what "
+"GDPR requires. Ticking it pre-selects consent and may make it invalid in the "
+"EU/UK."
+msgstr ""
 
-#: src/PostType/Subscriber.php:57
-#: src/PostType/Subscriber.php:59
+#: src/PostType/Subscriber.php:57 src/PostType/Subscriber.php:59
 #: src/PostType/Subscriber.php:60
 msgid "Subscribers"
 msgstr "Subskrybenci"
@@ -162,8 +201,7 @@ msgstr "Subskrybenci"
 msgid "Subscriber"
 msgstr "Subskrybent"
 
-#: src/PostType/Subscriber.php:61
-#: src/PostType/Subscriber.php:62
+#: src/PostType/Subscriber.php:61 src/PostType/Subscriber.php:62
 msgid "View Subscriber"
 msgstr "Zobacz subskrybenta"
 
@@ -179,26 +217,55 @@ msgstr "Nie znaleziono subskrybentów."
 msgid "No subscribers in Trash."
 msgstr "Brak subskrybentów w koszu."
 
-#: src/PostType/Subscriber.php:177
+#: src/PostType/Subscriber.php:192 src/Service/Checkout.php:88
 msgid "Subscribed"
 msgstr "Zapisany"
 
-#: src/PostType/Subscriber.php:224
+#: src/PostType/Subscriber.php:239
 msgid "Subscriber details"
 msgstr "Szczegóły subskrybenta"
 
-#: src/PostType/Subscriber.php:256
+#: src/PostType/Subscriber.php:271
 msgid "Explicit opt-in recorded"
 msgstr "Zapisano wyraźną zgodę"
 
-#: src/PostType/Subscriber.php:257
+#: src/PostType/Subscriber.php:272
 msgid "No consent recorded"
 msgstr "Nie zapisano zgody"
 
-#: src/PostType/Subscriber.php:289
+#: src/PostType/Subscriber.php:304
 msgid "Checkout"
 msgstr "Zamówienie"
 
 #: subscribe.php:47
-msgid "Subscribe - Newsletter Opt-In for WooCommerce requires WooCommerce to be active."
-msgstr "Subscribe - Zapis do newslettera dla WooCommerce wymaga aktywnej wtyczki WooCommerce."
+msgid ""
+"Subscribe - Newsletter Opt-In for WooCommerce requires WooCommerce to be "
+"active."
+msgstr ""
+"Subscribe - Zapis do newslettera dla WooCommerce wymaga aktywnej wtyczki "
+"WooCommerce."
+
+#~ msgid "Opt-in"
+#~ msgstr "Zapis"
+
+#~ msgid "The master switch. When off, the checkout checkbox renders nothing."
+#~ msgstr ""
+#~ "Przełącznik główny. Po wyłączeniu pole wyboru przy zamówieniu nie jest "
+#~ "wyświetlane."
+
+#~ msgid ""
+#~ "The consent text shown next to the checkbox. Make it clear what the "
+#~ "customer is agreeing to. Leave blank to use the default."
+#~ msgstr ""
+#~ "Tekst zgody wyświetlany obok pola wyboru. Jasno określ, na co klient "
+#~ "wyraża zgodę. Pozostaw puste, aby użyć wartości domyślnej."
+
+#~ msgid "Pre-check the box (not recommended for GDPR)."
+#~ msgstr "Zaznacz pole domyślnie (niezalecane w świetle RODO)."
+
+#~ msgid ""
+#~ "For valid GDPR consent, leave this off so the customer always opts in "
+#~ "explicitly."
+#~ msgstr ""
+#~ "Aby zgoda była ważna w świetle RODO, pozostaw tę opcję wyłączoną, tak aby "
+#~ "klient zawsze wyrażał zgodę w sposób wyraźny."
