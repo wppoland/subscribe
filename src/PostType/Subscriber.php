@@ -155,7 +155,22 @@ final class Subscriber implements HasHooks
         update_post_meta($postId, self::META_SOURCE, $source);
         update_post_meta($postId, self::META_CONSENTED, time());
 
-        return (int) $postId;
+        $postId = (int) $postId;
+
+        /**
+         * Fires once when a brand-new subscriber has been recorded.
+         *
+         * Only fires for genuinely new subscribers — the email de-duplication
+         * above guarantees this never fires for an existing subscriber. Add-ons
+         * (e.g. Subscribe Pro's welcome email) hook this to react to new opt-ins.
+         *
+         * @param int    $postId The new subscriber post ID.
+         * @param string $email  The subscriber's sanitised email address.
+         * @param string $source The opt-in source key (e.g. "checkout").
+         */
+        do_action('subscribe/subscriber_created', $postId, $email, $source);
+
+        return $postId;
     }
 
     /**
