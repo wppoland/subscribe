@@ -1,18 +1,27 @@
 /**
  * Subscribe — admin settings styles. A polished, dark-mode-aware card layout.
+ *
+ * One restrained family touch: the section accent is the storefront's postal
+ * vermilion (--subscribe-accent), so the settings screen reads as the same
+ * product as the checkout opt-in. Computed to clear WCAG AA on the wp-admin
+ * surface — #b83a22 is 5.73:1 on #fff and 5.03:1 on #f0f0f1 (AA text 4.5:1),
+ * and well past 3:1 as a UI accent bar. Dark scheme warms to #ec7a5e (matching
+ * the storefront's dark accent) for the same reasons.
  */
 
 .subscribe-admin {
     --subscribe-card-bg: #fff;
     --subscribe-card-border: #dcdcde;
     --subscribe-muted: #50575e;
-    --subscribe-accent: #2271b1;
+    --subscribe-accent: #b83a22;
+    --subscribe-accent-soft: rgba(184, 58, 34, 0.06);
     max-width: 820px;
 }
 
 .subscribe-intro {
-    background: linear-gradient(135deg, #f0f6fc, #f6f7f7);
+    background: linear-gradient(135deg, #fdf3f0, #f6f7f7);
     border: 1px solid var(--subscribe-card-border);
+    border-left: 3px solid var(--subscribe-accent);
     border-radius: 10px;
     padding: 1.25rem 1.5rem;
     margin: 1rem 0 1.5rem;
@@ -41,6 +50,80 @@
     padding-bottom: 0.5rem;
 }
 
+/* The section title carries the family accent as a small leading bar. */
+.subscribe-card h2 .subscribe-card__accent {
+    display: inline-block;
+    width: 4px;
+    height: 0.95em;
+    margin-right: 0.6rem;
+    border-radius: 2px;
+    background: var(--subscribe-accent);
+    vertical-align: -1px;
+}
+
+.subscribe-card h2 .subscribe-card__hint {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--subscribe-muted);
+}
+
+/*
+ * Live preview of the checkout opt-in row. A faithful, miniature echo of the
+ * storefront component so the merchant sees the effect of the label/default
+ * settings without leaving the page — show, don't just toggle.
+ */
+.subscribe-preview {
+    margin-top: 0.75rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(184, 58, 34, 0.32);
+    border-radius: 10px;
+    background: var(--subscribe-accent-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 30rem;
+}
+
+.subscribe-preview__box {
+    flex: 0 0 auto;
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 2px solid var(--subscribe-accent);
+    border-radius: 5px;
+    background: #fff;
+    display: grid;
+    place-content: center;
+}
+
+.subscribe-preview__box::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.28rem;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) scale(0);
+    transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.subscribe-preview.is-checked .subscribe-preview__box {
+    background: var(--subscribe-accent);
+}
+
+.subscribe-preview.is-checked .subscribe-preview__box::after {
+    transform: rotate(-45deg) scale(1);
+}
+
+.subscribe-preview__text {
+    flex: 1 1 auto;
+}
+
+.subscribe-preview__caption {
+    margin: 0.4rem 0 0;
+    font-style: italic;
+}
+
 .subscribe-export-notice .button {
     margin-left: 0.5rem;
 }
@@ -50,9 +133,29 @@
         --subscribe-card-bg: #1e1e1e;
         --subscribe-card-border: #3c3c3c;
         --subscribe-muted: #bbb;
+        --subscribe-accent: #ec7a5e;
+        --subscribe-accent-soft: rgba(236, 122, 94, 0.1);
     }
 
     .subscribe-intro {
-        background: linear-gradient(135deg, #1c2530, #1e1e1e);
+        background: linear-gradient(135deg, #2a1f1b, #1e1e1e);
+    }
+
+    .subscribe-preview {
+        border-color: rgba(236, 122, 94, 0.42);
+    }
+
+    .subscribe-preview__box {
+        background: transparent;
+    }
+
+    .subscribe-preview.is-checked .subscribe-preview__box {
+        background: var(--subscribe-accent);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .subscribe-preview__box::after {
+        transition: none;
     }
 }
