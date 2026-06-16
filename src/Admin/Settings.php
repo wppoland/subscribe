@@ -90,11 +90,23 @@ final class Settings implements HasHooks
                 </p>
             </div>
 
+            <?php
+            $default_label = __('Yes, sign me up for the newsletter.', 'subscribe');
+            $label_value   = (string) ($settings['label'] ?? '');
+            $preview_label = '' !== $label_value ? $label_value : $default_label;
+            ?>
+
             <form method="post" action="options.php">
                 <?php settings_fields(self::GROUP); ?>
 
                 <div class="subscribe-card">
-                    <h2><?php esc_html_e('Opt-in', 'subscribe'); ?></h2>
+                    <h2>
+                        <span class="subscribe-card__accent" aria-hidden="true"></span>
+                        <?php esc_html_e('Where it appears', 'subscribe'); ?>
+                        <span class="subscribe-card__hint">
+                            <?php esc_html_e('Turn the opt-in on and choose where customers see it.', 'subscribe'); ?>
+                        </span>
+                    </h2>
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
@@ -109,7 +121,7 @@ final class Settings implements HasHooks
                                         <?php esc_html_e('Show the newsletter opt-in to customers.', 'subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('The master switch. When off, the checkout checkbox renders nothing.', 'subscribe'); ?>
+                                        <?php esc_html_e('The master switch. When off, nothing renders anywhere and no new subscribers are collected — existing records stay intact.', 'subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -124,8 +136,25 @@ final class Settings implements HasHooks
                                             <?php checked((bool) ($settings['checkout'] ?? true), true); ?> />
                                         <?php esc_html_e('Add the opt-in checkbox at checkout.', 'subscribe'); ?>
                                     </label>
+                                    <p class="description">
+                                        <?php esc_html_e('Places the checkbox in the order form so customers can subscribe as they buy — the highest-intent moment. The source is recorded as “checkout”. Turn off to keep the opt-in for other placements only.', 'subscribe'); ?>
+                                    </p>
                                 </td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="subscribe-card">
+                    <h2>
+                        <span class="subscribe-card__accent" aria-hidden="true"></span>
+                        <?php esc_html_e('Consent &amp; wording', 'subscribe'); ?>
+                        <span class="subscribe-card__hint">
+                            <?php esc_html_e('Word the consent and decide whether the box starts ticked.', 'subscribe'); ?>
+                        </span>
+                    </h2>
+                    <table class="form-table" role="presentation">
+                        <tbody>
                             <tr>
                                 <th scope="row">
                                     <label for="subscribe_label"><?php esc_html_e('Checkbox label', 'subscribe'); ?></label>
@@ -133,10 +162,18 @@ final class Settings implements HasHooks
                                 <td>
                                     <input type="text" id="subscribe_label" class="large-text"
                                         name="<?php echo esc_attr(self::OPTION); ?>[label]"
-                                        value="<?php echo esc_attr((string) ($settings['label'] ?? '')); ?>"
-                                        placeholder="<?php esc_attr_e('Yes, sign me up for the newsletter.', 'subscribe'); ?>" />
+                                        value="<?php echo esc_attr($label_value); ?>"
+                                        placeholder="<?php echo esc_attr($default_label); ?>" />
                                     <p class="description">
-                                        <?php esc_html_e('The consent text shown next to the checkbox. Make it clear what the customer is agreeing to. Leave blank to use the default.', 'subscribe'); ?>
+                                        <?php esc_html_e('The consent text shown next to the checkbox. State plainly what the customer agrees to receive — vague wording weakens GDPR consent. Leave blank to use the default below.', 'subscribe'); ?>
+                                    </p>
+
+                                    <div class="subscribe-preview" id="subscribe-preview" aria-hidden="true">
+                                        <span class="subscribe-preview__box"></span>
+                                        <span class="subscribe-preview__text" id="subscribe-preview-text"><?php echo esc_html($preview_label); ?></span>
+                                    </div>
+                                    <p class="description subscribe-preview__caption">
+                                        <?php esc_html_e('Live preview — how the opt-in row looks at checkout.', 'subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -149,10 +186,10 @@ final class Settings implements HasHooks
                                         <input type="checkbox" id="subscribe_default"
                                             name="<?php echo esc_attr(self::OPTION); ?>[default_checked]" value="1"
                                             <?php checked((bool) ($settings['default_checked'] ?? false), true); ?> />
-                                        <?php esc_html_e('Pre-check the box (not recommended for GDPR).', 'subscribe'); ?>
+                                        <?php esc_html_e('Start with the box ticked.', 'subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('For valid GDPR consent, leave this off so the customer always opts in explicitly.', 'subscribe'); ?>
+                                        <?php esc_html_e('Leave off (recommended): the customer opts in deliberately, which is what GDPR requires. Ticking it pre-selects consent and may make it invalid in the EU/UK.', 'subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -162,6 +199,39 @@ final class Settings implements HasHooks
 
                 <?php submit_button(); ?>
             </form>
+
+            <script>
+            ( function () {
+                var labelInput = document.getElementById( 'subscribe_label' );
+                var defaultBox = document.getElementById( 'subscribe_default' );
+                var preview    = document.getElementById( 'subscribe-preview' );
+                var previewText = document.getElementById( 'subscribe-preview-text' );
+
+                if ( ! preview || ! previewText ) {
+                    return;
+                }
+
+                var fallback = <?php echo wp_json_encode($default_label); ?>;
+
+                function sync() {
+                    if ( labelInput ) {
+                        var value = labelInput.value.trim();
+                        previewText.textContent = value !== '' ? value : fallback;
+                    }
+                    if ( defaultBox ) {
+                        preview.classList.toggle( 'is-checked', defaultBox.checked );
+                    }
+                }
+
+                if ( labelInput ) {
+                    labelInput.addEventListener( 'input', sync );
+                }
+                if ( defaultBox ) {
+                    defaultBox.addEventListener( 'change', sync );
+                }
+                sync();
+            } )();
+            </script>
         </div>
         <?php
     }
