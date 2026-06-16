@@ -12,14 +12,16 @@
  */
 
 .subscribe-optin {
-    /* Postal vermilion — the franking ink. Themeable, with a sane fallback. */
-    --subscribe-accent: #c8472e;
-    --subscribe-accent-ink: #a8371f;
+    /* Postal vermilion — the franking ink. Themeable, with a sane fallback.
+       Deepened to clear WCAG AA (>=4.5:1) as text on the card surface even on a
+       light-grey checkout, and >=3:1 as a control border. */
+    --subscribe-accent: #b83a22;
+    --subscribe-accent-ink: #963019;
     --subscribe-radius: 10px;
     --subscribe-gap: 0.75rem;
     --subscribe-box: 1.35rem;
-    --subscribe-surface: rgba(200, 71, 46, 0.045);
-    --subscribe-border: rgba(200, 71, 46, 0.28);
+    --subscribe-surface: rgba(184, 58, 34, 0.045);
+    --subscribe-border: rgba(184, 58, 34, 0.32);
 
     margin: 1rem 0;
 }
@@ -72,7 +74,9 @@
 }
 
 .subscribe-optin__input:checked {
-    background: var(--subscribe-accent);
+    /* The franked fill carries the white check: keep it deep enough that white
+       passes AA (>=3:1) even in dark mode, independent of the brighter text accent. */
+    background: var(--subscribe-accent-fill, var(--subscribe-accent));
 }
 
 .subscribe-optin__input:checked::after {
@@ -143,10 +147,13 @@
 /* Dark scheme: warm the ink, lift the surface off a dark theme. */
 @media (prefers-color-scheme: dark) {
     .subscribe-optin {
-        --subscribe-accent: #e06a4f;
+        /* Bright enough to clear AA (>=4.5:1) as text on a dark surface; the
+           checked fill stays deeper so the white frank still passes (>=3:1). */
+        --subscribe-accent: #ec7a5e;
         --subscribe-accent-ink: #f08a70;
-        --subscribe-surface: rgba(224, 106, 79, 0.08);
-        --subscribe-border: rgba(224, 106, 79, 0.4);
+        --subscribe-accent-fill: #c0492f;
+        --subscribe-surface: rgba(236, 122, 94, 0.08);
+        --subscribe-border: rgba(236, 122, 94, 0.42);
     }
 
     .subscribe-optin__input {
