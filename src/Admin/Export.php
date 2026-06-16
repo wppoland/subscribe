@@ -113,6 +113,15 @@ final class Export implements HasHooks
     {
         $cells = array_map(
             static function (string $value): string {
+                // Neutralize spreadsheet formula triggers (OWASP CSV-injection
+                // mitigation): if a cell starts with =, +, -, @, tab or CR, a
+                // subscriber-supplied value could execute as a formula when the
+                // file is opened in Excel/Sheets. Prefix it with a single quote
+                // before the RFC 4180 quote-wrapping below.
+                if ('' !== $value && false !== strpbrk($value[0], "=+-@\t\r")) {
+                    $value = "'" . $value;
+                }
+
                 // Escape double quotes and wrap every field in quotes.
                 return '"' . str_replace('"', '""', $value) . '"';
             },
