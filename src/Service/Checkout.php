@@ -33,11 +33,38 @@ final class Checkout implements HasHooks
             return;
         }
 
+        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('woocommerce_checkout_after_terms_and_conditions', [$this, 'renderCheckbox']);
 
         // Persist the opt-in once the order is created. order_processed runs after
         // a successful checkout and gives us the posted fields safely.
         add_action('woocommerce_checkout_order_processed', [$this, 'capture'], 10, 2);
+    }
+
+    /**
+     * Enqueue the opt-in row styles and the presentation-only postmark script,
+     * only on the checkout where the field renders.
+     */
+    public function enqueueAssets(): void
+    {
+        if (! function_exists('is_checkout') || ! is_checkout()) {
+            return;
+        }
+
+        wp_enqueue_style(
+            'subscribe-checkout',
+            SUBSCRIBE_URL . 'assets/css/checkout.css',
+            [],
+            \Subscribe\VERSION,
+        );
+
+        wp_enqueue_script(
+            'subscribe-checkout',
+            SUBSCRIBE_URL . 'assets/js/checkout.js',
+            [],
+            \Subscribe\VERSION,
+            true,
+        );
     }
 
     /**
@@ -58,6 +85,7 @@ final class Checkout implements HasHooks
                     <?php checked($checked, true); ?>
                 />
                 <span class="subscribe-optin__text"><?php echo esc_html($this->settings->label()); ?></span>
+                <span class="subscribe-optin__mark" aria-hidden="true"><?php echo esc_html__('Subscribed', 'subscribe'); ?></span>
             </label>
         </p>
         <?php
