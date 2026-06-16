@@ -71,8 +71,7 @@ The opt-in renders on the classic (shortcode) checkout. The plugin declares comp
 == Screenshots ==
 
 1. The newsletter opt-in checkbox on the WooCommerce checkout.
-2. The Subscribe settings screen under WooCommerce.
-3. The Subscribers list with the Export to CSV button.
+2. The Subscribers list with the Export to CSV button.
 
 == Changelog ==
 
