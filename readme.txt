@@ -9,67 +9,74 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add a GDPR-minded newsletter opt-in checkbox to your WooCommerce checkout and collect subscribers with explicit consent.
+Adds a newsletter opt-in checkbox to the WooCommerce checkout and records each subscriber's email, consent and signup date.
 
 == Description ==
 
-Subscribe adds a newsletter opt-in checkbox to your WooCommerce checkout. When a
-customer ticks the box, their email is stored privately with their explicit
-consent, the source and a timestamp — ready for you to review and export.
+Subscribe puts a newsletter opt-in checkbox on your WooCommerce checkout. When a
+customer ticks it and places the order, their email is saved on your own site
+along with the consent flag, where the opt-in came from, and the date. You review
+the list under WooCommerce and export it whenever you need it.
 
-It is GDPR-minded by design: the consent checkbox is **unchecked by default**, the
-label is configurable, and nothing is sent to any external service. Subscribers
-are kept as a private custom post type you fully own.
+The checkbox is unticked by default, which is what most GDPR setups need: the
+customer has to make an active choice to opt in. You can edit the label text, and
+nothing is ever sent to an outside service, so the email addresses stay in your
+database and nowhere else.
 
-= Features =
+The plugin is built for the source to be easy to read and fork. If you hit a bug
+or want to suggest a change, the code and issue tracker live at
+https://github.com/wppoland/subscribe.
 
-* A newsletter opt-in checkbox on the classic WooCommerce checkout.
-* Explicit, unchecked-by-default consent with a configurable label (GDPR-minded).
-* Subscribers stored as a private custom post type — email, consent, source and timestamp.
-* Review subscribers under **WooCommerce → Subscribers** in wp-admin.
-* One-click **Export to CSV** of every subscriber.
-* No-duplicate, idempotent recording — a repeat email is never stored twice.
-* No external email service required — you own your data.
-* Accessible, mobile-friendly markup with dark-mode-aware styling.
-* Translation ready (POT included) and clean uninstall.
-* HPOS and cart/checkout blocks compatible.
+= What it does =
+
+* Adds a newsletter opt-in checkbox to the classic WooCommerce checkout.
+* Records the opt-in only when the customer ticks the box; it is unticked by default and the label is editable.
+* Saves each subscriber as a private custom post type record with email, consent, source and signup date.
+* Lists subscribers under WooCommerce > Subscribers in wp-admin.
+* Exports the whole list to a CSV file with one click (CSV-injection safe).
+* Skips duplicates, so the same email is never recorded twice.
+* Keeps everything in your own database. No third-party email service is involved.
+* Ships a translation template (.pot) and removes its data on uninstall.
+* Declares HPOS compatibility and works with WooCommerce 8.0 and up.
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/subscribe`, or install via Plugins → Add New.
-2. Activate it. WooCommerce must be installed and active.
-3. Go to **WooCommerce → Subscribe** to set your checkbox label and default state.
-4. Review subscribers under **WooCommerce → Subscribers** and export them to CSV.
+1. Upload the plugin to `/wp-content/plugins/subscribe`, or install it from Plugins > Add New.
+2. Activate it. WooCommerce must be installed and active first.
+3. Open WooCommerce > Subscribe to turn the opt-in on, set the checkbox label, and choose whether it starts ticked.
+4. Find the people who opted in under WooCommerce > Subscribers, and use the Export to CSV button there to download them.
 
 == Frequently Asked Questions ==
 
-= Does it require WooCommerce? =
+= Does it need WooCommerce? =
 
-Yes. WooCommerce must be installed and active.
+Yes. WooCommerce has to be installed and active, otherwise the plugin shows a notice and does nothing.
 
-= Is the checkbox checked by default? =
+= Is the checkbox ticked by default? =
 
-No. For valid GDPR consent the checkbox is unchecked by default, so customers
-have to actively opt in. You can change this in the settings if your local law
-allows it.
+No. It starts unticked so the customer opts in on purpose, which is what GDPR consent generally requires. There is a setting to pre-tick it if your local rules permit, but that is off out of the box.
 
-= Where are subscribers stored? =
+= Where do the subscribers end up? =
 
-Each subscriber is saved as a private "Subscriber" record (a custom post type)
-under the WooCommerce menu, with their email, consent, source and timestamp. You
-can export them all to a CSV file.
+In your WordPress database, as private "Subscriber" records under the WooCommerce menu. Each one holds the email, the consent flag, the source and the signup date. You can export the lot to CSV.
 
-= Does it send the subscriber to Mailchimp or another service? =
+= Does it push subscribers to Mailchimp or anything like that? =
 
-No. The plugin keeps subscribers on your own site so you stay in control.
+No. There is no integration with any external email platform. The addresses stay on your site and go where you decide to take them.
+
+= Does the checkbox show on the block-based checkout? =
+
+The opt-in renders on the classic (shortcode) checkout. The plugin declares compatibility with the cart and checkout blocks so it does not trigger a warning, but the checkbox itself currently appears on the classic checkout.
 
 == Screenshots ==
 
 1. The newsletter opt-in checkbox on the WooCommerce checkout.
 2. The Subscribe settings screen under WooCommerce.
-3. The private Subscribers list with CSV export.
+3. The Subscribers list with the Export to CSV button.
 
 == Changelog ==
 
 = 0.1.0 =
-* Initial release: checkout opt-in checkbox, private subscriber records with consent/source/timestamp, and CSV export.
+* First release: checkout opt-in checkbox, private subscriber records storing consent, source and date, and CSV export.
+</content>
+</invoke>
