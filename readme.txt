@@ -73,6 +73,10 @@ The opt-in renders on the classic (shortcode) checkout. The plugin declares comp
 1. The newsletter opt-in checkbox on the WooCommerce checkout.
 2. The Subscribers list with the Export to CSV button.
 
+== External Services ==
+
+Subscribe connects to no external services. The opt-in checkbox, the consent records and the CSV export all run on your own site, and no email addresses or order data are sent anywhere off it. Each subscriber is stored in your WordPress database as a private "subscribe_subscriber" custom post type record holding the email, consent flag, source and signup timestamp; its settings live in the "subscribe_settings" option. The plugin does not send email and is not tied to Mailchimp or any other mailing platform, so what you do with the exported list is entirely up to you.
+
 == Changelog ==
 
 = 0.1.0 =
