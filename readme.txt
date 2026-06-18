@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
 Requires Plugins: woocommerce
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,7 +88,9 @@ Subscribe connects to no external services. The opt-in checkbox, the consent rec
 
 == Changelog ==
 
+= 0.1.1 =
+* Adds `subscribe/subscriber_consent_default` and `subscribe/confirm_url` hooks for premium double opt-in flows.
+* Passes the confirmation URL to `subscribe/subscriber_created`.
+
 = 0.1.0 =
 * First release: checkout opt-in checkbox, private subscriber records storing consent, source and date, and CSV export.
-</content>
-</invoke>

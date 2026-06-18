@@ -1,17 +1,17 @@
-# Copyright (C) 2026 WPPoland
+# Copyright (C) 2026 WPPoland.com
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Subscribe - Newsletter Opt-In for WooCommerce 0.1.0\n"
+"Project-Id-Version: Subscribe - Newsletter Opt-In for WooCommerce 0.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/subscribe\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-16T20:24:26+00:00\n"
+"POT-Creation-Date: 2026-06-18T15:53:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: subscribe\n"
 
 #. Plugin Name of the plugin
@@ -31,12 +31,12 @@ msgstr ""
 
 #. Author of the plugin
 #: subscribe.php
-msgid "WPPoland"
+msgid "WPPoland.com"
 msgstr ""
 
 #. Author URI of the plugin
 #: subscribe.php
-msgid "https://plogins.com/"
+msgid "https://wppoland.com"
 msgstr ""
 
 #: src/Admin/Export.php:57
@@ -56,24 +56,24 @@ msgid "Security check failed. Please try again."
 msgstr ""
 
 #: src/Admin/Export.php:87
-#: src/PostType/Subscriber.php:186
-#: src/PostType/Subscriber.php:257
+#: src/PostType/Subscriber.php:204
+#: src/PostType/Subscriber.php:275
 msgid "Email"
 msgstr ""
 
 #: src/Admin/Export.php:88
-#: src/PostType/Subscriber.php:267
+#: src/PostType/Subscriber.php:285
 msgid "Consent"
 msgstr ""
 
 #: src/Admin/Export.php:89
-#: src/PostType/Subscriber.php:191
-#: src/PostType/Subscriber.php:277
+#: src/PostType/Subscriber.php:209
+#: src/PostType/Subscriber.php:295
 msgid "Source"
 msgstr ""
 
 #: src/Admin/Export.php:90
-#: src/PostType/Subscriber.php:281
+#: src/PostType/Subscriber.php:299
 msgid "Subscribed at"
 msgstr ""
 
@@ -197,24 +197,24 @@ msgstr ""
 msgid "No subscribers in Trash."
 msgstr ""
 
-#: src/PostType/Subscriber.php:192
+#: src/PostType/Subscriber.php:210
 #: src/Service/Checkout.php:88
 msgid "Subscribed"
 msgstr ""
 
-#: src/PostType/Subscriber.php:239
+#: src/PostType/Subscriber.php:257
 msgid "Subscriber details"
 msgstr ""
 
-#: src/PostType/Subscriber.php:271
+#: src/PostType/Subscriber.php:289
 msgid "Explicit opt-in recorded"
 msgstr ""
 
-#: src/PostType/Subscriber.php:272
+#: src/PostType/Subscriber.php:290
 msgid "No consent recorded"
 msgstr ""
 
-#: src/PostType/Subscriber.php:304
+#: src/PostType/Subscriber.php:336
 msgid "Checkout"
 msgstr ""
 
