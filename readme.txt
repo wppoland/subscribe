@@ -27,6 +27,15 @@ The plugin is built for the source to be easy to read and fork. If you hit a bug
 or want to suggest a change, the code and issue tracker live at
 https://github.com/wppoland/subscribe.
 
+= Documentation and links =
+
+* **Documentation** - https://plogins.com/subscribe/docs/
+* **Plugin page** - https://plogins.com/subscribe/
+* **Source code** - https://github.com/wppoland/subscribe
+* **Bug reports and feature requests** - https://github.com/wppoland/subscribe/issues
+* **Discussions and questions** - https://github.com/wppoland/subscribe/discussions
+
+
 = What it does =
 
 * Adds a newsletter opt-in checkbox to the classic WooCommerce checkout.
