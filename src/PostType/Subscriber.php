@@ -149,11 +149,28 @@ final class Subscriber implements HasHooks
         }
 
         $source = '' !== $source ? $source : self::SOURCE_CHECKOUT;
+        /**
+         * Filters the initial consent flag stored for a new subscriber.
+         *
+         * The free plugin stores confirmed opt-ins immediately. Premium double
+         * opt-in flows can set this to 0 until the email address is confirmed.
+         *
+         * @param int    $consent Initial consent value, 1 or 0.
+         * @param string $email   The subscriber's sanitised email address.
+         * @param string $source  The opt-in source key (e.g. "checkout").
+         */
+        $consent = (int) apply_filters('subscribe/subscriber_consent_default', 1, $email, $source);
 
         update_post_meta($postId, self::META_EMAIL, $email);
-        update_post_meta($postId, self::META_CONSENT, 1);
+        update_post_meta($postId, self::META_CONSENT, $consent > 0 ? 1 : 0);
         update_post_meta($postId, self::META_SOURCE, $source);
-        update_post_meta($postId, self::META_CONSENTED, time());
+        if ($consent > 0) {
+            update_post_meta($postId, self::META_CONSENTED, time());
+        } else {
+            delete_post_meta($postId, self::META_CONSENTED);
+        }
+
+        $confirmUrl = $this->confirmUrl($postId, $email, $source);
 
         $postId = (int) $postId;
 
@@ -167,8 +184,9 @@ final class Subscriber implements HasHooks
          * @param int    $postId The new subscriber post ID.
          * @param string $email  The subscriber's sanitised email address.
          * @param string $source The opt-in source key (e.g. "checkout").
+         * @param string $confirmUrl Confirmation URL, or an empty string.
          */
-        do_action('subscribe/subscriber_created', $postId, $email, $source);
+        do_action('subscribe/subscriber_created', $postId, $email, $source, $confirmUrl);
 
         return $postId;
     }
@@ -292,6 +310,20 @@ final class Subscriber implements HasHooks
             </tbody>
         </table>
         <?php
+    }
+
+    /**
+     * Get the confirmation URL for a subscriber.
+     *
+     * @param int    $postId The subscriber post ID.
+     * @param string $email  The subscriber email address.
+     * @param string $source The opt-in source.
+     * @return string
+     */
+    public function confirmUrl(int $postId, string $email, string $source = ''): string
+    {
+        $url = home_url('/');
+        return (string) apply_filters('subscribe/confirm_url', $url, $postId, $email, $source);
     }
 
     /**
