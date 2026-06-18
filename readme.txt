@@ -1,5 +1,5 @@
 === Subscribe - Newsletter Opt-In for WooCommerce ===
-Contributors: wppoland
+Contributors: motylanogha
 Tags: woocommerce, newsletter, opt-in, gdpr, checkout
 Requires at least: 6.5
 Tested up to: 7.0
