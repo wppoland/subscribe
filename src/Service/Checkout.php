@@ -89,6 +89,12 @@ final class Checkout implements HasHooks
             </label>
         </p>
         <?php
+        /**
+         * Fires after the checkout opt-in checkbox markup.
+         *
+         * Add-ons (e.g. Subscribe Pro custom fields) may output extra inputs here.
+         */
+        do_action('subscribe/checkout_after_optin');
     }
 
     /**

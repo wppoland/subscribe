@@ -83,12 +83,16 @@ final class Export implements HasHooks
         $rows = $this->rows();
 
         $lines   = [];
-        $lines[] = $this->csvLine([
-            __('Email', 'subscribe'),
-            __('Consent', 'subscribe'),
-            __('Source', 'subscribe'),
-            __('Subscribed at', 'subscribe'),
-        ]);
+        $headers = apply_filters(
+            'subscribe/export_headers',
+            [
+                __('Email', 'subscribe'),
+                __('Consent', 'subscribe'),
+                __('Source', 'subscribe'),
+                __('Subscribed at', 'subscribe'),
+            ],
+        );
+        $lines[] = $this->csvLine($headers);
 
         foreach ($rows as $row) {
             $lines[] = $this->csvLine($row);
@@ -159,12 +163,16 @@ final class Export implements HasHooks
             $source  = (string) get_post_meta($id, Subscriber::META_SOURCE, true);
             $ts      = absint(get_post_meta($id, Subscriber::META_CONSENTED, true));
 
-            $rows[] = [
-                $email,
-                $consent ? __('Yes', 'subscribe') : __('No', 'subscribe'),
-                $this->subscribers->sourceLabel($source),
-                $ts > 0 ? gmdate('Y-m-d H:i:s', $ts) : '',
-            ];
+            $rows[] = apply_filters(
+                'subscribe/export_row',
+                [
+                    $email,
+                    $consent ? __('Yes', 'subscribe') : __('No', 'subscribe'),
+                    $this->subscribers->sourceLabel($source),
+                    $ts > 0 ? gmdate('Y-m-d H:i:s', $ts) : '',
+                ],
+                $id,
+            );
         }
 
         return $rows;

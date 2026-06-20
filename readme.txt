@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
 Requires Plugins: woocommerce
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,11 @@ The opt-in renders on the classic (shortcode) checkout. The plugin declares comp
 Subscribe connects to no external services. The opt-in checkbox, the consent records and the CSV export all run on your own site, and no email addresses or order data are sent anywhere off it. Each subscriber is stored in your WordPress database as a private "subscribe_subscriber" custom post type record holding the email, consent flag, source and signup timestamp; its settings live in the "subscribe_settings" option. The plugin does not send email and is not tied to Mailchimp or any other mailing platform, so what you do with the exported list is entirely up to you.
 
 == Changelog ==
+
+= 0.1.2 =
+* Adds `subscribe/checkout_after_optin` action for extra checkout fields (e.g. Subscribe Pro custom fields).
+* Adds `subscribe/subscriber_meta` filter for extra subscriber post meta on create.
+* Adds `subscribe/export_headers` and `subscribe/export_row` filters for CSV export extensions.
 
 = 0.1.1 =
 * Adds `subscribe/subscriber_consent_default` and `subscribe/confirm_url` hooks for premium double opt-in flows.

@@ -172,6 +172,19 @@ final class Subscriber implements HasHooks
 
         $confirmUrl = $this->confirmUrl($postId, $email, $source);
 
+        /**
+         * Filters extra post meta stored on a new subscriber.
+         *
+         * Keys must start with `_subscribe_field_` or `_subscribe_pro_`. Values are
+         * stored as sanitised text fields on the subscriber post.
+         *
+         * @param array<string, string> $meta   Extra meta key => value pairs.
+         * @param string                $email  The subscriber's sanitised email address.
+         * @param string                $source The opt-in source key (e.g. "checkout").
+         */
+        $extraMeta = apply_filters('subscribe/subscriber_meta', [], $email, $source);
+        $this->saveExtraMeta($postId, $extraMeta);
+
         $postId = (int) $postId;
 
         /**
@@ -310,6 +323,21 @@ final class Subscriber implements HasHooks
             </tbody>
         </table>
         <?php
+    }
+
+    /**
+     * @param array<string, mixed> $meta
+     */
+    private function saveExtraMeta(int $postId, array $meta): void
+    {
+        foreach ($meta as $key => $value) {
+            $key = (string) $key;
+            if (! preg_match('/^_(subscribe_field_|subscribe_pro_)[a-z0-9_]+$/', $key)) {
+                continue;
+            }
+
+            update_post_meta($postId, $key, sanitize_text_field((string) $value));
+        }
     }
 
     /**
