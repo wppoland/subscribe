@@ -47,7 +47,7 @@ final class Settings implements HasHooks
     {
         add_submenu_page(
             'woocommerce',
-            __('Subscribe — Newsletter Opt-In', 'subscribe'),
+            __('Subscribe: Newsletter Opt-In', 'subscribe'),
             __('Subscribe', 'subscribe'),
             'manage_woocommerce',
             self::PAGE,
@@ -121,7 +121,7 @@ final class Settings implements HasHooks
                                         <?php esc_html_e('Show the newsletter opt-in to customers.', 'subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('The master switch. When off, nothing renders anywhere and no new subscribers are collected — existing records stay intact.', 'subscribe'); ?>
+                                        <?php esc_html_e('The master switch. When off, nothing renders anywhere and no new subscribers are collected, though existing records stay intact.', 'subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -137,7 +137,7 @@ final class Settings implements HasHooks
                                         <?php esc_html_e('Add the opt-in checkbox at checkout.', 'subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('Places the checkbox in the order form so customers can subscribe as they buy — the highest-intent moment. The source is recorded as “checkout”. Turn off to keep the opt-in for other placements only.', 'subscribe'); ?>
+                                        <?php esc_html_e('Places the checkbox in the order form so customers can subscribe as they buy, the highest-intent moment. The source is recorded as “checkout”. Turn off to keep the opt-in for other placements only.', 'subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -165,7 +165,7 @@ final class Settings implements HasHooks
                                         value="<?php echo esc_attr($label_value); ?>"
                                         placeholder="<?php echo esc_attr($default_label); ?>" />
                                     <p class="description">
-                                        <?php esc_html_e('The consent text shown next to the checkbox. State plainly what the customer agrees to receive — vague wording weakens GDPR consent. Leave blank to use the default below.', 'subscribe'); ?>
+                                        <?php esc_html_e('The consent text shown next to the checkbox. State plainly what the customer agrees to receive; vague wording weakens GDPR consent. Leave blank to use the default below.', 'subscribe'); ?>
                                     </p>
 
                                     <div class="subscribe-preview" id="subscribe-preview" aria-hidden="true">
@@ -173,7 +173,7 @@ final class Settings implements HasHooks
                                         <span class="subscribe-preview__text" id="subscribe-preview-text"><?php echo esc_html($preview_label); ?></span>
                                     </div>
                                     <p class="description subscribe-preview__caption">
-                                        <?php esc_html_e('Live preview — how the opt-in row looks at checkout.', 'subscribe'); ?>
+                                        <?php esc_html_e('Live preview of how the opt-in row looks at checkout.', 'subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
