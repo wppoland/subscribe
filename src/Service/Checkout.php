@@ -85,7 +85,7 @@ final class Checkout implements HasHooks
                     <?php checked($checked, true); ?>
                 />
                 <span class="subscribe-optin__text"><?php echo esc_html($this->settings->label()); ?></span>
-                <span class="subscribe-optin__mark" aria-hidden="true"><?php echo esc_html__('Subscribed', 'subscribe'); ?></span>
+                <span class="subscribe-optin__mark" aria-hidden="true"><?php echo esc_html__('Subscribed', 'plogins-subscribe'); ?></span>
             </label>
         </p>
         <?php

@@ -47,8 +47,8 @@ final class Settings implements HasHooks
     {
         add_submenu_page(
             'woocommerce',
-            __('Subscribe: Newsletter Opt-In', 'subscribe'),
-            __('Subscribe', 'subscribe'),
+            __('Subscribe: Newsletter Opt-In', 'plogins-subscribe'),
+            __('Subscribe', 'plogins-subscribe'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
@@ -84,14 +84,14 @@ final class Settings implements HasHooks
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 
             <div class="subscribe-intro">
-                <h2><?php esc_html_e('Grow your newsletter from checkout', 'subscribe'); ?></h2>
+                <h2><?php esc_html_e('Grow your newsletter from checkout', 'plogins-subscribe'); ?></h2>
                 <p>
-                    <?php esc_html_e('Add a GDPR-minded newsletter opt-in to your checkout (unchecked by default) and collect subscribers with explicit consent. Every opt-in is stored privately with its source and timestamp, ready to review and export.', 'subscribe'); ?>
+                    <?php esc_html_e('Add a GDPR-minded newsletter opt-in to your checkout (unchecked by default) and collect subscribers with explicit consent. Every opt-in is stored privately with its source and timestamp, ready to review and export.', 'plogins-subscribe'); ?>
                 </p>
             </div>
 
             <?php
-            $default_label = __('Yes, sign me up for the newsletter.', 'subscribe');
+            $default_label = __('Yes, sign me up for the newsletter.', 'plogins-subscribe');
             $label_value   = (string) ($settings['label'] ?? '');
             $preview_label = '' !== $label_value ? $label_value : $default_label;
             ?>
@@ -102,42 +102,42 @@ final class Settings implements HasHooks
                 <div class="subscribe-card">
                     <h2>
                         <span class="subscribe-card__accent" aria-hidden="true"></span>
-                        <?php esc_html_e('Where it appears', 'subscribe'); ?>
+                        <?php esc_html_e('Where it appears', 'plogins-subscribe'); ?>
                         <span class="subscribe-card__hint">
-                            <?php esc_html_e('Turn the opt-in on and choose where customers see it.', 'subscribe'); ?>
+                            <?php esc_html_e('Turn the opt-in on and choose where customers see it.', 'plogins-subscribe'); ?>
                         </span>
                     </h2>
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    <?php esc_html_e('Enable opt-in', 'subscribe'); ?>
+                                    <?php esc_html_e('Enable opt-in', 'plogins-subscribe'); ?>
                                 </th>
                                 <td>
                                     <label for="subscribe_enabled">
                                         <input type="checkbox" id="subscribe_enabled"
                                             name="<?php echo esc_attr(self::OPTION); ?>[enabled]" value="1"
                                             <?php checked((bool) ($settings['enabled'] ?? false), true); ?> />
-                                        <?php esc_html_e('Show the newsletter opt-in to customers.', 'subscribe'); ?>
+                                        <?php esc_html_e('Show the newsletter opt-in to customers.', 'plogins-subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('The master switch. When off, nothing renders anywhere and no new subscribers are collected, existing records stay intact.', 'subscribe'); ?>
+                                        <?php esc_html_e('The master switch. When off, nothing renders anywhere and no new subscribers are collected, existing records stay intact.', 'plogins-subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    <label for="subscribe_checkout"><?php esc_html_e('Checkout checkbox', 'subscribe'); ?></label>
+                                    <label for="subscribe_checkout"><?php esc_html_e('Checkout checkbox', 'plogins-subscribe'); ?></label>
                                 </th>
                                 <td>
                                     <label for="subscribe_checkout">
                                         <input type="checkbox" id="subscribe_checkout"
                                             name="<?php echo esc_attr(self::OPTION); ?>[checkout]" value="1"
                                             <?php checked((bool) ($settings['checkout'] ?? true), true); ?> />
-                                        <?php esc_html_e('Add the opt-in checkbox at checkout.', 'subscribe'); ?>
+                                        <?php esc_html_e('Add the opt-in checkbox at checkout.', 'plogins-subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('Places the checkbox in the order form so customers can subscribe as they buy, the highest-intent moment. The source is recorded as “checkout”. Turn off to keep the opt-in for other placements only.', 'subscribe'); ?>
+                                        <?php esc_html_e('Places the checkbox in the order form so customers can subscribe as they buy, the highest-intent moment. The source is recorded as “checkout”. Turn off to keep the opt-in for other placements only.', 'plogins-subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -148,16 +148,16 @@ final class Settings implements HasHooks
                 <div class="subscribe-card">
                     <h2>
                         <span class="subscribe-card__accent" aria-hidden="true"></span>
-                        <?php esc_html_e('Consent &amp; wording', 'subscribe'); ?>
+                        <?php esc_html_e('Consent &amp; wording', 'plogins-subscribe'); ?>
                         <span class="subscribe-card__hint">
-                            <?php esc_html_e('Word the consent and decide whether the box starts ticked.', 'subscribe'); ?>
+                            <?php esc_html_e('Word the consent and decide whether the box starts ticked.', 'plogins-subscribe'); ?>
                         </span>
                     </h2>
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    <label for="subscribe_label"><?php esc_html_e('Checkbox label', 'subscribe'); ?></label>
+                                    <label for="subscribe_label"><?php esc_html_e('Checkbox label', 'plogins-subscribe'); ?></label>
                                 </th>
                                 <td>
                                     <input type="text" id="subscribe_label" class="large-text"
@@ -165,7 +165,7 @@ final class Settings implements HasHooks
                                         value="<?php echo esc_attr($label_value); ?>"
                                         placeholder="<?php echo esc_attr($default_label); ?>" />
                                     <p class="description">
-                                        <?php esc_html_e('The consent text shown next to the checkbox. State plainly what the customer agrees to receive, vague wording weakens GDPR consent. Leave blank to use the default below.', 'subscribe'); ?>
+                                        <?php esc_html_e('The consent text shown next to the checkbox. State plainly what the customer agrees to receive, vague wording weakens GDPR consent. Leave blank to use the default below.', 'plogins-subscribe'); ?>
                                     </p>
 
                                     <div class="subscribe-preview" id="subscribe-preview" aria-hidden="true">
@@ -173,23 +173,23 @@ final class Settings implements HasHooks
                                         <span class="subscribe-preview__text" id="subscribe-preview-text"><?php echo esc_html($preview_label); ?></span>
                                     </div>
                                     <p class="description subscribe-preview__caption">
-                                        <?php esc_html_e('Live preview, how the opt-in row looks at checkout.', 'subscribe'); ?>
+                                        <?php esc_html_e('Live preview, how the opt-in row looks at checkout.', 'plogins-subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    <?php esc_html_e('Default state', 'subscribe'); ?>
+                                    <?php esc_html_e('Default state', 'plogins-subscribe'); ?>
                                 </th>
                                 <td>
                                     <label for="subscribe_default">
                                         <input type="checkbox" id="subscribe_default"
                                             name="<?php echo esc_attr(self::OPTION); ?>[default_checked]" value="1"
                                             <?php checked((bool) ($settings['default_checked'] ?? false), true); ?> />
-                                        <?php esc_html_e('Start with the box ticked.', 'subscribe'); ?>
+                                        <?php esc_html_e('Start with the box ticked.', 'plogins-subscribe'); ?>
                                     </label>
                                     <p class="description">
-                                        <?php esc_html_e('Leave off (recommended): the customer opts in deliberately, which is what GDPR requires. Ticking it pre-selects consent and may make it invalid in the EU/UK.', 'subscribe'); ?>
+                                        <?php esc_html_e('Leave off (recommended): the customer opts in deliberately, which is what GDPR requires. Ticking it pre-selects consent and may make it invalid in the EU/UK.', 'plogins-subscribe'); ?>
                                     </p>
                                 </td>
                             </tr>

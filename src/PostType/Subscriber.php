@@ -54,15 +54,15 @@ final class Subscriber implements HasHooks
             self::POST_TYPE,
             [
                 'labels'              => [
-                    'name'               => __('Subscribers', 'subscribe'),
-                    'singular_name'      => __('Subscriber', 'subscribe'),
-                    'menu_name'          => __('Subscribers', 'subscribe'),
-                    'all_items'          => __('Subscribers', 'subscribe'),
-                    'edit_item'          => __('View Subscriber', 'subscribe'),
-                    'view_item'          => __('View Subscriber', 'subscribe'),
-                    'search_items'       => __('Search subscribers', 'subscribe'),
-                    'not_found'          => __('No subscribers found.', 'subscribe'),
-                    'not_found_in_trash' => __('No subscribers in Trash.', 'subscribe'),
+                    'name'               => __('Subscribers', 'plogins-subscribe'),
+                    'singular_name'      => __('Subscriber', 'plogins-subscribe'),
+                    'menu_name'          => __('Subscribers', 'plogins-subscribe'),
+                    'all_items'          => __('Subscribers', 'plogins-subscribe'),
+                    'edit_item'          => __('View Subscriber', 'plogins-subscribe'),
+                    'view_item'          => __('View Subscriber', 'plogins-subscribe'),
+                    'search_items'       => __('Search subscribers', 'plogins-subscribe'),
+                    'not_found'          => __('No subscribers found.', 'plogins-subscribe'),
+                    'not_found_in_trash' => __('No subscribers in Trash.', 'plogins-subscribe'),
                 ],
                 'public'              => false,
                 'show_ui'             => true,
@@ -214,13 +214,13 @@ final class Subscriber implements HasHooks
 
         foreach ($columns as $key => $label) {
             if ('title' === $key) {
-                $reordered['subscribe_email'] = __('Email', 'subscribe');
+                $reordered['subscribe_email'] = __('Email', 'plogins-subscribe');
                 continue;
             }
 
             if ('date' === $key) {
-                $reordered['subscribe_source']   = __('Source', 'subscribe');
-                $reordered['subscribe_consented'] = __('Subscribed', 'subscribe');
+                $reordered['subscribe_source']   = __('Source', 'plogins-subscribe');
+                $reordered['subscribe_consented'] = __('Subscribed', 'plogins-subscribe');
             }
 
             $reordered[$key] = $label;
@@ -267,7 +267,7 @@ final class Subscriber implements HasHooks
     {
         add_meta_box(
             'subscribe_subscriber_details',
-            __('Subscriber details', 'subscribe'),
+            __('Subscriber details', 'plogins-subscribe'),
             [$this, 'renderMetaBox'],
             self::POST_TYPE,
             'normal',
@@ -285,7 +285,7 @@ final class Subscriber implements HasHooks
         <table class="widefat striped">
             <tbody>
                 <tr>
-                    <th style="width:180px"><?php esc_html_e('Email', 'subscribe'); ?></th>
+                    <th style="width:180px"><?php esc_html_e('Email', 'plogins-subscribe'); ?></th>
                     <td>
                         <?php if ('' !== $email) : ?>
                             <a href="<?php echo esc_url('mailto:' . $email); ?>"><?php echo esc_html($email); ?></a>
@@ -295,21 +295,21 @@ final class Subscriber implements HasHooks
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Consent', 'subscribe'); ?></th>
+                    <th><?php esc_html_e('Consent', 'plogins-subscribe'); ?></th>
                     <td>
                         <?php
                         echo $consent
-                            ? esc_html__('Explicit opt-in recorded', 'subscribe')
-                            : esc_html__('No consent recorded', 'subscribe');
+                            ? esc_html__('Explicit opt-in recorded', 'plogins-subscribe')
+                            : esc_html__('No consent recorded', 'plogins-subscribe');
                         ?>
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Source', 'subscribe'); ?></th>
+                    <th><?php esc_html_e('Source', 'plogins-subscribe'); ?></th>
                     <td><?php echo esc_html($this->sourceLabel($source)); ?></td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Subscribed at', 'subscribe'); ?></th>
+                    <th><?php esc_html_e('Subscribed at', 'plogins-subscribe'); ?></th>
                     <td>
                         <?php
                         echo esc_html(
@@ -361,7 +361,7 @@ final class Subscriber implements HasHooks
     {
         switch ($source) {
             case self::SOURCE_CHECKOUT:
-                return __('Checkout', 'subscribe');
+                return __('Checkout', 'plogins-subscribe');
             case '':
                 return '—';
             default:

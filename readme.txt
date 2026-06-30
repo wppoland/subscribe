@@ -1,11 +1,11 @@
-=== Subscribe - Newsletter Opt-In for WooCommerce ===
+=== Plogins Subscribe for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, newsletter, opt-in, gdpr, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
 Requires Plugins: woocommerce
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,15 +25,14 @@ database and nowhere else.
 
 The plugin is built for the source to be easy to read and fork. If you hit a bug
 or want to suggest a change, the code and issue tracker live at
-https://github.com/wppoland/subscribe.
+https://github.com/wppoland/plogins-subscribe.
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/subscribe/docs/
-* **Plugin page** - https://plogins.com/subscribe/
-* **Source code** - https://github.com/wppoland/subscribe
-* **Bug reports and feature requests** - https://github.com/wppoland/subscribe/issues
-* **Discussions and questions** - https://github.com/wppoland/subscribe/discussions
+* **Documentation** - https://plogins.com/plogins-subscribe/docs/
+* **Plugin page** - https://plogins.com/plogins-subscribe/
+* **Source code** - https://github.com/wppoland/plogins-subscribe
+* **Bug reports and feature requests** - https://github.com/wppoland/plogins-subscribe/issues
 
 
 = What it does =
@@ -87,6 +86,9 @@ The opt-in renders on the classic (shortcode) checkout. The plugin declares comp
 Subscribe connects to no external services. The opt-in checkbox, the consent records and the CSV export all run on your own site, and no email addresses or order data are sent anywhere off it. Each subscriber is stored in your WordPress database as a private "subscribe_subscriber" custom post type record holding the email, consent flag, source and signup timestamp; its settings live in the "subscribe_settings" option. The plugin does not send email and is not tied to Mailchimp or any other mailing platform, so what you do with the exported list is entirely up to you.
 
 == Changelog ==
+
+= 0.1.3 =
+* Renamed to Plogins Subscribe for WooCommerce for a more distinctive plugin name.
 
 = 0.1.2 =
 * Adds `subscribe/checkout_after_optin` action for extra checkout fields (e.g. Subscribe Pro custom fields).
