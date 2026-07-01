@@ -76,6 +76,11 @@ No. There is no integration with any external email platform. The addresses stay
 
 The opt-in renders on the classic (shortcode) checkout. The plugin declares compatibility with the cart and checkout blocks so it does not trigger a warning, but the checkbox itself currently appears on the classic checkout.
 
+
+= Does this plugin work on WordPress Multisite? =
+
+Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data.
+
 == Screenshots ==
 
 1. The newsletter opt-in checkbox on the WooCommerce checkout.
